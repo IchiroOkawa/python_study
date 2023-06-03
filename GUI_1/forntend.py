@@ -1,5 +1,19 @@
 import tkinter as tk
 import backend
+ 
+def click_plus(a,b):
+    global answer
+    try:
+        # get score
+        a = a.get()
+        b = b.get()
+        # reset inputs
+        input_a.delete(0,tk.END)
+        input_b.delete(0,tk.END)
+        # set answer
+        answer.set(backend.plus(a, b))
+    except tk.TclError:
+        answer.set('Error!')
 
 # make window
 root = tk.Tk()
@@ -8,26 +22,32 @@ root = tk.Tk()
 root.title('The calculator')
 
 # a is widget variation
-a = tk.StringVar()
-
+a = tk.IntVar()
 # make input
 input_a = tk.Entry(textvariable=a)
 
 # b is widget variation
-b = tk.StringVar()
-
+b = tk.IntVar()
 # make input
 input_b = tk.Entry(textvariable=b)
 
 # make button
-puls_button = tk.Button(
+plus_button = tk.Button(
     text= '+',
-    command=lambda:text.set()
+    cursor='hand2',
+    command=lambda: click_plus(a, b)
 )
+
+# set answer as widget 
+answer = tk.StringVar()
+# make label
+label = tk.Label(textvariable=answer)
 
 # deploy contents
 input_a.pack()
 input_b.pack()
+plus_button.pack()
+label.pack() 
 
 # show window
 root.mainloop()
