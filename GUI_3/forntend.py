@@ -2,130 +2,219 @@ import tkinter as tk
 import backend
 
 input = ''
+memory  = 0
+# 0 is none 1 is plus 2 is minus 3 is times 4 is devision
+session = 0
+cnt = False
+al_or_not = False
  
-def click_plus(a,b):
-    global answer
-    try:
-        # get score
-        a = a.get()
-        b = b.get()
-        # reset inputs
-        input_a.delete(0,tk.END)
-        input_b.delete(0,tk.END)
-        # set answer
-        answer.set(backend.plus(a, b))
-    except:
-        answer.set('Error!')
+def click_equal():
+    global session,memory,display,cnt,input
+    if session == 0:
+        memory = int(input)
+        display.set('0')
+    elif session == 1:
+        memory += int(input)
+        display.set(str(memory))
+        cnt = True
+    elif session == 2:
+        memory -= int(input)
+        display.set(str(memory))
+        cnt = True
+    elif session == 3:
+        memory *= int(input)
+        display.set(str(memory))
+        cnt = True
+    elif session == 4:
+        memory /= int(input)
+        display.set(str(memory))
+        cnt = True
 
-def click_minus(a,b):
-    global answer
-    try:
-        # get score
-        a = a.get()
-        b = b.get()
-        # reset inputs
-        input_a.delete(0,tk.END)
-        input_b.delete(0,tk.END)
-        # set answer
-        answer.set(backend.minus(a, b))
-    except:
-        answer.set('Error!')
+def click_plus():
+    global session,memory,display,cnt,input
+    if session == 0:
+        memory = int(input)
+        input = ''
+        display.set('0')
+    elif session == 1:
+        memory += int(input)
+        input = ''
+        display.set(str(memory))
+        cnt = True
+    elif session == 2:
+        memory -= int(input)
+        input = ''
+        display.set(str(memory))
+        cnt = True
+    elif session == 3:
+        memory *= int(input)
+        input = ''
+        display.set(str(memory))
+        cnt = True
+    elif session == 4:
+        memory /= int(input)
+        input = ''
+        display.set(str(memory))
+        cnt = True
+    
+    session = 1
 
-def click_times(a,b):
-    global answer
-    try:
-        # get score
-        a = a.get()
-        b = b.get()
-        # reset inputs
-        input_a.delete(0,tk.END)
-        input_b.delete(0,tk.END)
-        # set answer
-        answer.set(backend.times(a, b))
-    except:
-        answer.set('Error!')
+def click_minus():
+    global session,memory,display,cnt,input
+    if session == 0:
+        memory = int(input)
+        input = ''
+        display.set('0')
+    elif session == 1:
+        memory += int(input)
+        input = ''
+        display.set(str(memory))
+        cnt = True
+    elif session == 2:
+        memory -= int(input)
+        input = ''
+        display.set(str(memory))
+        cnt = True
+    elif session == 3:
+        memory *= int(input)
+        input = ''
+        display.set(str(memory))
+        cnt = True
+    elif session == 4:
+        memory /= int(input)
+        input = ''
+        display.set(str(memory))
+        cnt = True
+    
+    session = 2
 
-def click_devision(a,b):
-    global answer
-    try:
-        # get score
-        a = a.get()
-        b = b.get()
-        # reset inputs
-        input_a.delete(0,tk.END)
-        input_b.delete(0,tk.END)
-        # set answer
-        answer.set(backend.devided(a, b))
-    except:
-        answer.set('Error!')
+def click_times():
+    global session,memory,display,cnt,input
+    if session == 0:
+        memory = int(input)
+        input = ''
+        display.set('0')
+    elif session == 1:
+        memory += int(input)
+        input = ''
+        display.set(str(memory))
+        cnt = True
+    elif session == 2:
+        memory -= int(input)
+        input = ''
+        display.set(str(memory))
+        cnt = True
+    elif session == 3:
+        memory *= int(input)
+        input = ''
+        display.set(str(memory))
+        cnt = True
+    elif session == 4:
+        memory /= int(input)
+        input = ''
+        display.set(str(memory))
+        cnt = True
+    
+    session = 3
+
+def click_devision():
+    global session,memory,display,cnt,input
+    if session == 0:
+        memory = int(input)
+        input = ''
+        display.set('0')
+    elif session == 1:
+        memory += int(input)
+        input = ''
+        display.set(str(memory))
+        cnt = True
+    elif session == 2:
+        memory -= int(input)
+        input = ''
+        display.set(str(memory))
+        cnt = True
+    elif session == 3:
+        memory *= int(input)
+        input = ''
+        display.set(str(memory))
+        cnt = True
+    elif session == 4:
+        memory /= int(input)
+        input = ''
+        display.set(str(memory))
+        cnt = True
+    
+    session = 4
 
 def click_one():
-    global input,display
-    if input == '0':
+    global input,display,cnt
+    if input == '0' or cnt:
         input = '1'
+        cnt = False
     else:
         input += '1'        
     display.set(input)
 
 def click_two():
-    global input,display
-    if input == '0':
+    global input,display,cnt
+    if input == '0' or cnt:
         input = '2'
+        cnt = False
     else:
         input += '2'
     display.set(input)
 
 def click_three():
-    global input,display
-    if input == '0':
+    global input,display,cnt
+    if input == '0' or cnt:
         input = '3'
     else:
         input += '3'
     display.set(input)
 
 def click_four():
-    global input,display
-    if input == '0':
+    global input,display,cnt
+    if input == '0' or cnt:
         input = '4'
     else:
         input += '4'
     display.set(input)
 
 def click_five():
-    global input,display
-    if input == '0':
+    global input,display,cnt
+    if input == '0' or cnt:
         input = '5'
     else:
         input += '5'
     display.set(input)
 
 def click_six():
-    global input,display
-    if input == '0':
+    global input,display,cnt
+    if input == '0' or cnt:
         input = '6'
     else:
         input += '6'
     display.set(input)
 
 def click_seven():
-    global input,display
-    if input == '0':
+    global input,display,cnt
+    if input == '0' or cnt:
         input = '7'
     else:
         input += '7'
     display.set(input)
 
 def click_eight():
-    global input,display
-    if input == '0':
+    global input,display,cnt
+    if input == '0' or cnt:
         input = '8'
     else:
         input += '8'
     display.set(input)
 
 def click_nine():
-    global input,display
-    if input == '9':
+    global input,display,cnt
+    if input == '0' or cnt:
         input = '9'
     else:
         input += '9'
@@ -133,11 +222,34 @@ def click_nine():
 
 def click_zero():
     global input
-    if input == '0':
-        pass
+    if input == '0' or cnt:
+        input = '0'
     else:
         input += '0'
         display.set(input)
+
+def click_clear():
+    global input,al_or_not,memory,session,display,c
+    if al_or_not:
+        memory = 0
+        session = 0 
+        al_or_not = False
+        cnt = False
+        c.set('C')
+    else:
+        input = ''
+        display.set('0')
+        al_or_not = True
+        c.set("AC")
+
+def click_dot():
+    global input,display
+    if input in '.':
+        pass
+    else:
+        input += '.'
+    display.set(input)
+
 
 # make window
 root = tk.Tk()
@@ -155,29 +267,35 @@ root.geometry('300x200')
 bnt_frame = tk.Frame(root,padx=5,pady=5,relief=tk.RAISED)
 
 # make button
+equal_button = tk.Button(
+    bnt_frame,
+    text='=',
+    cursor='hand2',
+    command=click_equal
+)
 plus_button = tk.Button(
     bnt_frame,
     text= '+',
     cursor='hand2',
-    command=lambda: click_plus(a, b)
+    command=click_plus
 )
 minus_button = tk.Button(
     bnt_frame,
     text= '-',
     cursor='hand2',
-    command=lambda: click_minus(a, b)
+    command=click_minus
 )
 times_button = tk.Button(
     bnt_frame,
     text= '*',
     cursor='hand2',
-    command=lambda: click_times(a, b)
+    command=click_times
 )
 division_button = tk.Button(
     bnt_frame,
     text= '/',
     cursor='hand2',
-    command=lambda: click_devision(a, b)
+    command=click_devision
 )
 one_button = tk.Button(
     bnt_frame,
@@ -239,6 +357,17 @@ zero_button = tk.Button(
     cursor='hand2',
     command = click_zero
 )
+c = tk.StringVar(value='C')
+clear_button = tk.Button(
+    bnt_frame,
+    textvariable=c,
+    command = click_clear
+)
+dot_button = tk.Button(
+    bnt_frame,
+    text='.',
+    command = click_dot
+)
 
 # label
 display = tk.StringVar(value='0')
@@ -252,6 +381,9 @@ plus_button.pack()
 minus_button.pack()
 times_button.pack()
 division_button.pack()
+equal_button.pack()
+clear_button.pack()
+dot_button.pack()
 one_button.pack()
 two_button.pack()
 three_button.pack()
