@@ -8,8 +8,8 @@ def click_plus(a,b):
         a = a.get()
         b = b.get()
         # reset inputs
-        input_a.delete(0,tk.END)
-        input_b.delete(0,tk.END)
+        # input_a.delete(0,tk.END)
+        # input_b.delete(0,tk.END)
         # set answer
         answer.set(backend.plus(a, b))
     except tk.TclError:
