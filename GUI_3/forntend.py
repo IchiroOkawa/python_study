@@ -2,20 +2,21 @@ import tkinter as tk
 import backend
 import math
 
-input = ''
+input = '0'
 memory  = 0
-# 0 is none 1 is plus 2 is minus 3 is times 4 is devision
+# 0 is initial 1 is plus 2 is minus 3 is times 4 is devision
 session = 0
 cnt = False
 al_or_not = False
+after_eq = False
  
 def click_equal():
-    global session,memory,display,cnt,input
+    global session,memory,display,cnt,input,after_eq
     if session == 0:
         try:
             memory = int(input)
         except:
-            memory += float(input)
+            memory = float(input)
     elif session == 1:
         try:
             memory += int(input)
@@ -38,20 +39,26 @@ def click_equal():
         display.set(str(memory))
         cnt = True
     elif session == 4:
-        try:
-            memory /= int(input)
-        except:
-            memory /= float(input)
-        display.set(str(memory))
-        cnt = True
+        if input == '0':
+            display.set('Error')
+            try:
+                memory /= int(input)
+            except:
+                memory /= float(input)
+            display.set(str(memory))
+            cnt = True
+    after_eq = True
 
 def click_plus():
-    global session,memory,display,cnt,input
-    if session == 0:
+    global session,memory,display,cnt,input,after_eq
+    if after_eq:
+        cnt = True
+    elif session == 0:
         try:
             memory = int(input)
         except:
-            memory += float(input)
+            memory = float(input)
+        cnt = True       
     elif session == 1:
         try:
             memory += int(input)
@@ -74,22 +81,28 @@ def click_plus():
         display.set(str(memory))
         cnt = True
     elif session == 4:
-        try:
-            memory /= int(input)
-        except:
-            memory /= float(input)
-        display.set(str(memory))
-        cnt = True
+        if input == '0':
+            display.set('Error')
+            try:
+                memory /= int(input)
+            except:
+                memory /= float(input)
+            display.set(str(memory))
+            cnt = True
     
     session = 1
+    after_eq = False
 
 def click_minus():
-    global session,memory,display,cnt,input
-    if session == 0:
+    global session,memory,display,cnt,input,after_eq
+    if after_eq:
+        cnt = True
+    elif session == 0:
         try:
             memory = int(input)
         except:
-            memory += float(input)
+            memory = float(input)
+        cnt = True  
     elif session == 1:
         try:
             memory += int(input)
@@ -112,22 +125,28 @@ def click_minus():
         display.set(str(memory))
         cnt = True
     elif session == 4:
-        try:
-            memory /= int(input)
-        except:
-            memory /= float(input)
-        display.set(str(memory))
-        cnt = True
+        if input == '0':
+            display.set('Error')
+            try:
+                memory /= int(input)
+            except:
+                memory /= float(input)
+            display.set(str(memory))
+            cnt = True
 
     session = 2
+    after_eq = False
 
 def click_times():
-    global session,memory,display,cnt,input
-    if session == 0:
+    global session,memory,display,cnt,input,after_eq
+    if after_eq:
+        cnt = True
+    elif session == 0:
         try:
             memory = int(input)
         except:
-            memory += float(input)
+            memory = float(input)
+        cnt = True  
     elif session == 1:
         try:
             memory += int(input)
@@ -150,22 +169,28 @@ def click_times():
         display.set(str(memory))
         cnt = True
     elif session == 4:
-        try:
-            memory /= int(input)
-        except:
-            memory /= float(input)
-        display.set(str(memory))
-        cnt = True
+        if input == '0':
+            display.set('Error')
+            try:
+                memory /= int(input)
+            except:
+                memory /= float(input)
+            display.set(str(memory))
+            cnt = True
     
     session = 3
+    after_eq = False
 
 def click_devision():
-    global session,memory,display,cnt,input
-    if session == 0:
+    global session,memory,display,cnt,input,after_eq
+    if after_eq:
+        cnt = True
+    elif session == 0:
         try:
             memory = int(input)
         except:
-            memory += float(input)
+            memory = float(input)
+        cnt = True  
     elif session == 1:
         try:
             memory += int(input)
@@ -188,14 +213,17 @@ def click_devision():
         display.set(str(memory))
         cnt = True
     elif session == 4:
-        try:
-            memory /= int(input)
-        except:
-            memory /= float(input)
-        display.set(str(memory))
-        cnt = True
+        if input == '0':
+            display.set('Error')
+            try:
+                memory /= int(input)
+            except:
+                memory /= float(input)
+            display.set(str(memory))
+            cnt = True
     
     session = 4
+    after_eq = False
 
 def click_one():
     global input,display,cnt,al_or_not,c
@@ -223,6 +251,7 @@ def click_three():
     global input,display,cnt,al_or_not,c
     if input == '0' or cnt:
         input = '3'
+        cnt = False
     else:
         input += '3'
     al_or_not = False
@@ -233,6 +262,7 @@ def click_four():
     global input,display,cnt,al_or_not,c
     if input == '0' or cnt:
         input = '4'
+        cnt = False
     else:
         input += '4'
     al_or_not = False
@@ -243,6 +273,7 @@ def click_five():
     global input,display,cnt,al_or_not,c
     if input == '0' or cnt:
         input = '5'
+        cnt = False
     else:
         input += '5'
     al_or_not = False
@@ -253,6 +284,7 @@ def click_six():
     global input,display,cnt,al_or_not,c
     if input == '0' or cnt:
         input = '6'
+        cnt = False
     else:
         input += '6'
     al_or_not = False
@@ -263,6 +295,7 @@ def click_seven():
     global input,display,cnt,al_or_not,c
     if input == '0' or cnt:
         input = '7'
+        cnt = False
     else:
         input += '7'
     al_or_not = False
@@ -273,6 +306,7 @@ def click_eight():
     global input,display,cnt,al_or_not,c
     if input == '0' or cnt:
         input = '8'
+        cnt = False
     else:
         input += '8'
     al_or_not = False
@@ -283,6 +317,7 @@ def click_nine():
     global input,display,cnt,al_or_not,c
     if input == '0' or cnt:
         input = '9'
+        cnt = False
     else:
         input += '9'
     al_or_not = False
@@ -290,12 +325,13 @@ def click_nine():
     display.set(input)
 
 def click_zero():
-    global input,al_or_not,c
+    global input,al_or_not,c,cnt
     if input == '0' or cnt:
         input = '0'
+        cnt = False
     else:
         input += '0'
-        display.set(input)
+    display.set(input)
     al_or_not = False
     c.set('C')
 
@@ -309,7 +345,7 @@ def click_clear():
         c.set('C')
     else:
         if memory != 0:
-            input = ''
+            input = '0'
             display.set('0')
             al_or_not = True
             c.set("AC")
@@ -319,16 +355,19 @@ def click_clear():
 
 def click_dot():
     global input,display
-    if input in '.':
+    if '.' in input:
         pass
     else:
         input += '.'
     display.set(input)
 
 def click_root():
-    global input
-    input = math.sqrt(int(input))
-    display.set(str(input))
+    global input,display
+    try:
+        input = math.sqrt(int(input))
+        display.set(str(input))
+    except:
+        display.set("Error")
 
 # make window
 root = tk.Tk()
