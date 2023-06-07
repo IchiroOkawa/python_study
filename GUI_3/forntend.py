@@ -379,7 +379,7 @@ root.title('The calculator')
 root.geometry('200x200')
 
 # fix size
-# root.resizable(width=False,height=False)
+root.resizable(width=False,height=False)
 
 # make frame
 text_frame = tk.Frame(root,padx=10,pady=10)
